@@ -13,6 +13,7 @@ for await (const entry of glob('src/**/*.html')) {
 }
 
 export default defineConfig({
+    base: '/https://github.com/RobertMorga/Zadanie-7.git/'
   plugins: [],
 
   root: resolve(__dirname, 'src'),

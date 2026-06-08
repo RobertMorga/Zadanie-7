@@ -1,15 +1,57 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <div id="app">
-      <a href="/login/">Login</a>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Artykułów</title>
+    <script type="module" src="/src/main.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col overflow-x-hidden">
+
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-indigo-600">WebArticles</h1>
+            <nav class="flex gap-3">
+                <button id="add-article-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded transition-colors duration-200">Dodaj artykuł</button>
+                <button id="logout-btn" class="hidden bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition-colors duration-200">Wyloguj</button>
+                <a id="login-link" href="login.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded transition-colors duration-200 inline-block text-center">Zaloguj</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
+        <section id="articles-container" class="grid gap-6">
+        </section>
+    </main>
+
+    <div id="article-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-xl transform transition-all">
+            <h2 id="modal-title" class="text-xl font-bold mb-4">Dodaj artykuł</h2>
+            <form id="article-form" class="space-y-4">
+                <input type="hidden" id="article-id">
+                <div>
+                    <label class="block text-sm font-medium mb-1" for="form-title">Tytuł</label>
+                    <input type="text" id="form-title" required class="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" for="form-subtitle">Podtytuł</label>
+                    <input type="text" id="form-subtitle" class="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" for="form-author">Autor</label>
+                    <input type="text" id="form-author" required class="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1" for="form-content">Treść</label>
+                    <textarea id="form-content" required rows="4" class="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" id="close-modal-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded transition-colors duration-200">Anuluj</button>
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded transition-colors duration-200">Zapisz</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+</body>
 </html>
